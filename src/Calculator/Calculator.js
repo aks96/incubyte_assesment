@@ -1,4 +1,7 @@
 export function add(numbers) {
-  if (numbers === "") return 0;
-  return numbers.split(",").reduce((sum, num) => sum + parseInt(num), 0);
+  if (numbers.trim() === "") return 0;
+  return numbers
+    .split(",")
+    .map((num) => parseInt(num.trim()))
+    .reduce((sum, num) => sum + (isNaN(num) ? 0 : num), 0);
 }
